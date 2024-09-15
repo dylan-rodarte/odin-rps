@@ -1,17 +1,33 @@
 
 let humanScore = 0;
 let computerScore = 0;
+let totalScore = 0;
 
-playGame();
+const rockButton = document.querySelector(".rock");
+const paperButton = document.querySelector(".paper");
+const scissButton = document.querySelector(".sciss");
+
+rockButton.addEventListener("click", () => {
+    playRound("Rock", getComputerChoice());
+});
+
+paperButton.addEventListener("click", () => {
+    playRound("Paper", getComputerChoice());
+});
+
+scissButton.addEventListener("click", () => {
+    playRound("Scissors", getComputerChoice());
+});
+
+//playGame();
 
 console.log("Human score = " + humanScore);
 console.log("Computer score = " + computerScore);
 
 
-function playGame(){
+/*function playGame(){
     let i = 0;
     do{
-        playRound(getHumanChoice(), getComputerChoice());
         console.log("Current Score: Human: " + humanScore + " Computer: " + computerScore)
         i = humanScore + computerScore;
         console.log(i);
@@ -23,7 +39,7 @@ function playGame(){
     else{
         alert("Sorry, you lose. " + computerScore + "-" + humanScore);
     }
-}
+}*/
 
 function playRound(humanChoice, computerChoice){
     //Draw conditions
@@ -43,11 +59,13 @@ function playRound(humanChoice, computerChoice){
 function humanWin(humanChoice, computerChoice){
     humanScore += 1;
     console.log("You win! " + humanChoice + " beats " + computerChoice + " :)");
+    winningScore();
 }
 
 function computerWin(humanChoice, computerChoice){
     computerScore += 1;
     console.log("You lose! " + computerChoice + " beats " + humanChoice + " :(");
+    winningScore();
 }
 
 function getComputerChoice(){
@@ -63,7 +81,16 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice(){
+function winningScore(){
+    if (humanScore == 5){
+        alert("Hooray! You win! " + humanScore + "-" + computerScore);
+    }
+    else if (computerScore == 5){
+        alert("Sorry, you lose. " + computerScore + "-" + humanScore);
+    }
+}
+
+/*function getHumanChoice(){
     let choice = prompt("Rock, Paper, Scissors");
     choice = choice.toLowerCase();
     if (choice === "rock"){
@@ -85,4 +112,4 @@ function getHumanChoice(){
         alert("There are only three options!");
         return getHumanChoice();
     }
-}
+}*/
