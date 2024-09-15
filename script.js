@@ -19,6 +19,10 @@ scissButton.addEventListener("click", () => {
     playRound("Scissors", getComputerChoice());
 });
 
+const humanSB = document.querySelector(".humanScore");
+humanSB.textContent = `Your Score: ${humanScore}`;
+const computerSB = document.querySelector(".computerScore");
+computerSB.textContent = `Computer Score: ${computerScore}`;
 //playGame();
 
 console.log("Human score = " + humanScore);
@@ -58,12 +62,14 @@ function playRound(humanChoice, computerChoice){
 
 function humanWin(humanChoice, computerChoice){
     humanScore += 1;
+    humanSB.textContent = `Your Score: ${humanScore}`;
     console.log("You win! " + humanChoice + " beats " + computerChoice + " :)");
     winningScore();
 }
 
 function computerWin(humanChoice, computerChoice){
     computerScore += 1;
+    computerSB.textContent = `Computer Score: ${computerScore}`;
     console.log("You lose! " + computerChoice + " beats " + humanChoice + " :(");
     winningScore();
 }
