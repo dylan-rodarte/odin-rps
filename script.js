@@ -19,11 +19,11 @@ scissButton.addEventListener("click", () => {
     playRound("Scissors", getComputerChoice());
 });
 
+const playArea = document.querySelector(".playArea");
 const humanSB = document.querySelector(".humanScore");
 humanSB.textContent = `Your Score: ${humanScore}`;
 const computerSB = document.querySelector(".computerScore");
 computerSB.textContent = `Computer Score: ${computerScore}`;
-//playGame();
 
 console.log("Human score = " + humanScore);
 console.log("Computer score = " + computerScore);
@@ -48,7 +48,7 @@ console.log("Computer score = " + computerScore);
 function playRound(humanChoice, computerChoice){
     //Draw conditions
     if (humanChoice === computerChoice){
-        console.log("Draw, please select again!");
+        playArea.textContent = "Draw, please select again!";
     }
     //Human win conditions
     else if (humanChoice === "Rock" && computerChoice === "Scissors" || humanChoice === "Paper" && computerChoice === "Rock" || humanChoice === "Scissors" && computerChoice === "Paper"){
@@ -63,14 +63,14 @@ function playRound(humanChoice, computerChoice){
 function humanWin(humanChoice, computerChoice){
     humanScore += 1;
     humanSB.textContent = `Your Score: ${humanScore}`;
-    console.log("You win! " + humanChoice + " beats " + computerChoice + " :)");
+    playArea.textContent = "You win! " + humanChoice + " beats " + computerChoice + " :)";
     winningScore();
 }
 
 function computerWin(humanChoice, computerChoice){
     computerScore += 1;
     computerSB.textContent = `Computer Score: ${computerScore}`;
-    console.log("You lose! " + computerChoice + " beats " + humanChoice + " :(");
+    playArea.textContent = "You lose! " + computerChoice + " beats " + humanChoice + " :(";
     winningScore();
 }
 
@@ -89,10 +89,10 @@ function getComputerChoice(){
 
 function winningScore(){
     if (humanScore == 5){
-        alert("Hooray! You win! " + humanScore + "-" + computerScore);
+        playArea.textContent = "Hooray! You win! " + humanScore + "-" + computerScore;
     }
     else if (computerScore == 5){
-        alert("Sorry, you lose. " + computerScore + "-" + humanScore);
+        playArea.textContent = "Sorry, you lose. " + computerScore + "-" + humanScore;
     }
 }
 
